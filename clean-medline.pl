@@ -26,6 +26,7 @@ foreach my $xmlfile (@files){
 	{	
 		my $title = lc($c->{Article}{ArticleTitle});
 		$title =~ s/^\[|\]$//g;
+		$title =~ s/\.|:|,|;|\(|\)/ /g;
 		print "$title"; # print title of the article
 		
 		if(exists $c->{Article}{Abstract}{AbstractText}){
@@ -38,7 +39,7 @@ foreach my $xmlfile (@files){
 			} else { 
 				$text = $t; # this is for simple abstracts (no division of text)
 			}
-			$text =~ s/\.|\:|\;|\(|\)/ /g;
+			$text =~ s/\.|:|,|;|\(|\)/ /g;
                         print $text;
 
 		}
